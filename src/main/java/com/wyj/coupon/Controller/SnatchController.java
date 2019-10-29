@@ -22,13 +22,12 @@ public class SnatchController {
             @RequestParam("cookie") String cookie,
             @RequestParam("hour") Integer hour ,
             @RequestParam("minute") Integer minute){
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
-        System.out.println(simpleDateFormat.format(new Date()));
+        JdSnatch jdSnatch = new JdSnatch(couponUrl, cookie);
         Timer timer = new Timer();
         long delay=0;
-        long period=250;
+        long period=1;
         System.out.println("开抢");
-        timer.schedule(new JdSnatch(couponUrl,cookie),delay,period);
+        timer.schedule(jdSnatch,delay,period);
 
 
         return "ok";
